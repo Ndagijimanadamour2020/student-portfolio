@@ -1,0 +1,5 @@
+username,email,first_name,last_name,role,status
+jdoe,jdoe@example.com,John,Doe,student,active
+msmith,msmith@example.com,Mary,Smith,teacher,active
+rjones,rjones@example.com,Robert,Jones,parent,active
+admin,admin@example.com,System,Admin,admin,active

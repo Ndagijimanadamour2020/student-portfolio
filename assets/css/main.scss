@@ -1,0 +1,188 @@
+// Variables
+$primary-color: #3498db;
+$secondary-color: #2ecc71;
+$danger-color: #e74c3c;
+$light-color: #ecf0f1;
+$dark-color: #2c3e50;
+
+// Mixins
+@mixin box-shadow($x: 0, $y: 2px, $blur: 4px, $color: rgba(0, 0, 0, 0.1)) {
+    box-shadow: $x $y $blur $color;
+}
+
+// Base styles
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: $dark-color;
+}
+
+header {
+    background-color: $primary-color;
+    color: white;
+    padding: 1rem 0;
+    
+    .navbar-brand {
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+    
+    .nav-link {
+        color: rgba(255, 255, 255, 0.85);
+        
+        &:hover {
+            color: white;
+        }
+    }
+}
+
+.card {
+    @include box-shadow;
+    border: none;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    
+    &-header {
+        background-color: $primary-color;
+        color: white;
+        border-radius: 8px 8px 0 0 !important;
+    }
+}
+
+.btn-primary {
+    background-color: $primary-color;
+    border-color: darken($primary-color, 5%);
+    
+    &:hover {
+        background-color: darken($primary-color, 5%);
+        border-color: darken($primary-color, 10%);
+    }
+}
+
+.table {
+    th {
+        background-color: $light-color;
+    }
+    
+    tr:hover {
+        background-color: rgba($primary-color, 0.05);
+    }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .card {
+        margin-bottom: 1rem;
+    }
+}
+
+// Custom utilities
+.rounded-lg {
+    border-radius: 12px;
+}
+
+.shadow-sm {
+    @include box-shadow(0, 1px, 2px);
+}
+//responsiveness
+// Add these to your existing SCSS
+
+// Mobile-first adjustments
+@media (max-width: 767.98px) {
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+    
+    .card {
+        margin-bottom: 0.75rem;
+    }
+    
+    .table-responsive {
+        border: 0;
+        -webkit-overflow-scrolling: touch;
+        
+        table {
+            width: 100%;
+            margin-bottom: 1rem;
+            
+            thead {
+                display: none;
+            }
+            
+            tr {
+                display: block;
+                margin-bottom: 1rem;
+                border: 1px solid #dee2e6;
+                border-radius: 4px;
+            }
+            
+            td {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0.5rem;
+                border-bottom: 1px solid #dee2e6;
+                
+                &::before {
+                    content: attr(data-label);
+                    font-weight: bold;
+                    margin-right: 1rem;
+                }
+            }
+        }
+    }
+    
+    .form-row {
+        flex-direction: column;
+        
+        .col {
+            margin-bottom: 1rem;
+        }
+    }
+    
+    // Mobile menu
+    .navbar-collapse {
+        background-color: $primary-color;
+        padding: 1rem;
+        margin-top: 0.5rem;
+        border-radius: 4px;
+    }
+}
+
+// Add mobile-specific utility classes
+.mobile-only {
+    display: none;
+    
+    @media (max-width: 767.98px) {
+        display: block;
+    }
+}
+
+.desktop-only {
+    @media (max-width: 767.98px) {
+        display: none;
+    }
+}
+
+// Mobile menu toggle animation
+.navbar-toggler {
+    border: none;
+    
+    &:focus {
+        outline: none;
+        box-shadow: none;
+    }
+    
+    .navbar-toggler-icon {
+        transition: transform 0.3s ease;
+    }
+    
+    &[aria-expanded="true"] .navbar-toggler-icon {
+        transform: rotate(90deg);
+    }
+}
